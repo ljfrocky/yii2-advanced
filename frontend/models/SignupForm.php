@@ -1,7 +1,7 @@
 <?php
 namespace frontend\models;
 
-use common\models\User;
+use common\models\Users;
 use yii\base\Model;
 use Yii;
 
@@ -20,16 +20,16 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'string', 'min' => 3, 'max' => 36],
 
-            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\Users', 'message' => 'This email address has already been taken.'],
 
+            ['password', 'trim'],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ];
@@ -38,12 +38,12 @@ class SignupForm extends Model
     /**
      * Signs user up.
      *
-     * @return User|null the saved model or null if saving fails
+     * @return Users|null the saved model or null if saving fails
      */
     public function signup()
     {
         if ($this->validate()) {
-            $user = new User();
+            $user = new Users();
             $user->username = $this->username;
             $user->email = $this->email;
             $user->setPassword($this->password);

@@ -8,7 +8,7 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
- * User model
+ * User model，此类已经被common\models\Users类代替
  *
  * @property integer $id
  * @property string $username
@@ -20,6 +20,8 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ *
+ * @deprecated
  */
 class User extends ActiveRecord implements IdentityInterface
 {

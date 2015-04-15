@@ -70,8 +70,11 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionLogin()
-    {
+    /**
+     * 用户登录
+     * @return string|\yii\web\Response
+     */
+    public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -116,8 +119,11 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionSignup()
-    {
+    /**
+     * 用户注册
+     * @return string|\yii\web\Response
+     */
+    public function actionSignup() {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
