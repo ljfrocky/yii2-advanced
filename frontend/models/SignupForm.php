@@ -13,25 +13,28 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $passwordRepeat;
+    public $verifyCode;
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
+            [['username', 'email', 'password', 'passwordRepeat'], 'trim'],
+            [['username', 'email', 'password', 'passwordRepeat'], 'required'],
+
             ['username', 'string', 'min' => 3, 'max' => 36],
 
-            ['email', 'trim'],
-            ['email', 'required'],
             ['email', 'email'],
+            ['email', 'string', 'min' => 3, 'max' => 128],
             ['email', 'unique', 'targetClass' => '\common\models\Users', 'message' => 'This email address has already been taken.'],
 
-            ['password', 'trim'],
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            [['password', 'passwordRepeat'], 'string', 'min' => 6, 'max' => 30],
+
+            ['passwordRepeat', 'compare', 'compareAttribute' => 'password', 'operator' => '==='],
+
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -40,8 +43,7 @@ class SignupForm extends Model
      *
      * @return Users|null the saved model or null if saving fails
      */
-    public function signup()
-    {
+    public function signup() {
         if ($this->validate()) {
             $user = new Users();
             $user->username = $this->username;
