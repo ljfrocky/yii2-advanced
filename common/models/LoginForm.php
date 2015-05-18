@@ -11,6 +11,7 @@ class LoginForm extends Model
 {
     public $email;
     public $password;
+    public $verifyCode;
     public $rememberMe = true;
 
     private $_user = false;
@@ -26,6 +27,7 @@ class LoginForm extends Model
             [['email', 'password'], 'trim'],
             [['email', 'password'], 'required'],
             ['email', 'email'],
+            ['verifyCode', 'captcha'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
