@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'IT部落格-管理后台';
 ?>
 <div class="site-index">
 

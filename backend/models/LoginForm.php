@@ -1,8 +1,9 @@
 <?php
-namespace common\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
+use common\models\Users;
 
 /**
  * Login form
@@ -77,5 +78,18 @@ class LoginForm extends Model
         }
 
         return $this->_user;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => '邮箱',
+            'password' => '密码',
+            'rememberMe' => '自动登录',
+            'verifyCode' => '验证码',
+        ];
     }
 }
