@@ -28,7 +28,7 @@ class LoginForm extends Model
             [['email', 'password'], 'trim'],
             [['email', 'password'], 'required'],
             ['email', 'email'],
-            ['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha', 'message' => '验证码不正确'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()

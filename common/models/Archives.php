@@ -37,7 +37,7 @@ class Archives extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['author', 'content', 'cate_id', 'title'], 'required'],
+            [['author', 'content', 'cate_id', 'title', 'type', 'status'], 'required'],
             [['type', 'time', 'views', 'cate_id', 'status'], 'integer'],
             [['content'], 'string'],
             [['author'], 'string', 'max' => 255],
@@ -51,16 +51,16 @@ class Archives extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'author' => 'Author',
-            'type' => 'Type',
-            'content' => 'Content',
-            'time' => 'Time',
-            'views' => 'Views',
-            'cate_id' => 'Cate ID',
-            'tags' => 'Tags',
-            'status' => 'Status',
-            'title' => 'Title',
+            'id' => '文章编号',
+            'author' => '作者',
+            'type' => '文章类型',
+            'content' => '正文',
+            'time' => '发布时间',
+            'views' => '阅读数',
+            'cate_id' => '所属栏目',
+            'tags' => '标签',
+            'status' => '状态',
+            'title' => '标题',
         ];
     }
 

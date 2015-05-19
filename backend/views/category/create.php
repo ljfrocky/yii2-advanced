@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Archives */
+/* @var $model common\models\Categories */
 
-$this->title = '写文章';
-$this->params['breadcrumbs'][] = ['label' => '文章管理', 'url' => ['index']];
+$this->title = '创建栏目';
+$this->params['breadcrumbs'][] = ['label' => '栏目管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="archives-create">
+<div class="categories-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
