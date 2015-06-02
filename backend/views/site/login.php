@@ -8,12 +8,9 @@ use yii\captcha\Captcha;
 /* @var $model \backend\models\LoginForm */
 
 $this->title = '请登录';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <!--<h1><?/*= Html::encode($this->title) */?></h1>-->
-
-    <p>请填写以下信息登录：</p>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row">
         <div class="col-lg-5">
