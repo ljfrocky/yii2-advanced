@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\ResetPasswdForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -22,8 +23,9 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'captcha'],
+                        'actions' => ['login', 'error', 'captcha', 'request-password-reset'],
                         'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
                         'actions' => ['logout', 'index'],
@@ -83,6 +85,18 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * 忘记密码
+     */
+    public function actionRequestPasswordReset()
+    {
+        $this->layout = 'blank';
+
+        return $this->render('resetPassword', [
+            'model' => new ResetPasswdForm(),
+        ]);
     }
 
     public function actionLogout()
