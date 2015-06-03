@@ -24,16 +24,32 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            // username and password are both required
-            [['email', 'password'], 'trim'],
-            [['email', 'password'], 'required'],
-            ['email', 'email'],
-            ['verifyCode', 'captcha', 'message' => '验证码不正确'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
+            ['email', 'trim'],
+            ['email', 'required', 'message' => '请填写邮箱'],
+            ['email', 'email', 'message' => '邮箱格式不正确'],
+            ['email', 'validateUser'],
+
+            ['password', 'trim'],
+            ['password', 'required', 'message' => '请填写密码'],
             ['password', 'validatePassword'],
+
+            ['verifyCode', 'captcha', 'message' => '验证码不正确'],
+
+            ['rememberMe', 'boolean'],
         ];
+    }
+
+    /**
+     * 检查用户是否存在
+     * @param string $attribute
+     * @param array $params
+     */
+    public function validateUser($attribute, $params) {
+        if (!$this->hasErrors()) {
+            if ($this->getUser() === null) {
+                $this->addError($attribute, '账户不存在');
+            }
+        }
     }
 
     /**
@@ -47,8 +63,8 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect email or password.');
+            if (!$user->validatePassword($this->password)) {
+                $this->addError($attribute, '密码不正确');
             }
         }
     }

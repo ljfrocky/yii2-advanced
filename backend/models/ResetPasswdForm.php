@@ -20,8 +20,8 @@ class ResetPasswdForm extends Model {
     public function rules() {
         return [
             ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
+            ['email', 'required', 'message' => '请填写邮箱'],
+            ['email', 'email', 'message' => '邮箱格式不正确'],
             ['verifyCode', 'captcha', 'message' => '验证码错误'],
         ];
     }

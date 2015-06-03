@@ -29,10 +29,12 @@ $this->title = '忘记密码';
             <?= $form->field($model, 'email') ?>
             <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                 'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-9">{input}</div></div>',
+                'imageOptions' => ['alt' => '点击换图','title' => '点击换图', 'style' => 'cursor:pointer'],
             ]) ?>
             <div class="form-group">
                 <?= Html::submitButton('发送邮件', ['class' => 'btn btn-success btn-block', 'name' => 'login-button']) ?>
             </div>
+            <?php $form->end(); ?>
         </div>
     </div>
 </div>
