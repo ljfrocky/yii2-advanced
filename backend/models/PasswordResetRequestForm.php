@@ -10,7 +10,7 @@ namespace backend\models;
 use common\models\Users;
 use yii\base\Model;
 
-class ResetPasswdForm extends Model {
+class PasswordResetRequestForm extends Model {
 
     public $email;
     public $verifyCode;
