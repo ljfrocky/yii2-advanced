@@ -8,6 +8,7 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use backend\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -20,7 +21,7 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -29,13 +30,14 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="wrap">
     <div class="container">
+        <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="text-center">&copy; IT部落格 <?= date('Y') ?></p>
+        <p class="text-center">&copy; <?= Yii::$app->name . date('Y') ?></p>
     </div>
 </footer>
 

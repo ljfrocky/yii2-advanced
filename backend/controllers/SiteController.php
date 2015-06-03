@@ -94,8 +94,20 @@ class SiteController extends Controller
     {
         $this->layout = 'blank';
 
+        $model = new ResetPasswdForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // 发送邮件到用户邮箱
+            if ($model->sendEmail()) {
+                Yii::$app->getSession()->setFlash('success', '邮件已发送到: ' . $model->email . '，请注意查收');
+
+                return $this->goHome();
+            } else {
+                Yii::$app->getSession()->setFlash('error', '邮件发送失败 :(');
+            }
+        }
+
         return $this->render('resetPassword', [
-            'model' => new ResetPasswdForm(),
+            'model' => $model,
         ]);
     }
 

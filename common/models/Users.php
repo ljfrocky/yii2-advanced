@@ -16,6 +16,7 @@ use yii\base\NotSupportedException;
  * @property string $password
  * @property string $auth_key
  * @property integer $status
+ * @property string $password_reset_token
  */
 class Users extends ActiveRecord implements IdentityInterface {
 
@@ -124,5 +125,30 @@ class Users extends ActiveRecord implements IdentityInterface {
      */
     public static function findIdentityByAccessToken($token, $type = null) {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }
+
+    /**
+     * Finds out if password reset token is valid
+     *
+     * @param string $token password reset token
+     * @return boolean
+     */
+    public static function isPasswordResetTokenValid($token)
+    {
+        if (empty($token)) {
+            return false;
+        }
+        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        $parts = explode('_', $token);
+        $timestamp = (int) end($parts);
+        return $timestamp + $expire >= time();
+    }
+
+    /**
+     * Generates new password reset token
+     */
+    public function generatePasswordResetToken()
+    {
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 }
