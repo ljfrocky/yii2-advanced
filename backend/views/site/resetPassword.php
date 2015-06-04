@@ -11,12 +11,11 @@ $this->title = '重置密码';
 <div class="site-reset-password">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>请填写新密码：</p>
-
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password')->passwordInput(['maxLength' => 25]) ?>
+                <?= $form->field($model, 'passwordRepeat')->passwordInput(['maxLength' => 25]) ?>
                 <div class="form-group">
                     <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
                 </div>

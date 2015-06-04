@@ -169,4 +169,12 @@ class Users extends ActiveRecord implements IdentityInterface {
             'status' => self::STATUS_ACTIVE,
         ]);
     }
+
+    /**
+     * Removes password reset token
+     */
+    public function removePasswordResetToken()
+    {
+        $this->password_reset_token = '';
+    }
 }

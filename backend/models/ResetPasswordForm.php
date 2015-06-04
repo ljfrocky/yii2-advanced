@@ -12,6 +12,7 @@ use Yii;
 class ResetPasswordForm extends Model
 {
     public $password;
+    public $passwordRepeat;
 
     /**
      * @var \common\models\User
@@ -41,11 +42,25 @@ class ResetPasswordForm extends Model
     /**
      * @inheritdoc
      */
+    public function attributeLabels()
+    {
+        return [
+            'password' => '新密码',
+            'passwordRepeat' => '确认新密码',
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'required', 'message' => '请填写新密码'],
+            ['password', 'string', 'min' => 6, 'max' => 25, 'tooShort' => '密码至少需要6位', 'tooLong' => '密码最多只能设25位'],
+
+            ['passwordRepeat', 'required', 'message' => '请再次填写新密码'],
+            ['passwordRepeat', 'compare', 'compareAttribute' => 'password', 'message' => '两次输入的密码不一致'],
         ];
     }
 
