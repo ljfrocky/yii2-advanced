@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "blog_categories".
@@ -12,7 +14,7 @@ use Yii;
  *
  * @property Archives[] $archives
  */
-class Categories extends \yii\db\ActiveRecord
+class Categories extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -50,5 +52,11 @@ class Categories extends \yii\db\ActiveRecord
     public function getArchives()
     {
         return $this->hasMany(Archives::className(), ['cate_id' => 'id']);
+    }
+
+    public static function getDropDownList()
+    {
+        $list = static::find()->asArray()->all();
+        return ArrayHelper::map($list, 'id', 'name');
     }
 }

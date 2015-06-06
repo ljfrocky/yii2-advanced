@@ -26,7 +26,7 @@ $this->title = '忘记密码';
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(['id' => 'reset-pwd-form']); ?>
-            <?= $form->field($model, 'email') ?>
+            <?= $form->field($model, 'email')->textInput(['autocomplete' => 'off']) ?>
             <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                 'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-9">{input}</div></div>',
                 'imageOptions' => ['alt' => '点击换图','title' => '点击换图', 'style' => 'cursor:pointer'],

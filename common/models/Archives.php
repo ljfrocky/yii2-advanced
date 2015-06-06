@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blog_archives".
@@ -21,8 +22,19 @@ use Yii;
  * @property Categories $cate
  * @property Comments[] $comments
  */
-class Archives extends \yii\db\ActiveRecord
+class Archives extends ActiveRecord
 {
+
+    public static $typeList = [
+        '0' => '原创',
+        '1' => '转载',
+    ];
+
+    public static $statusList = [
+        '0' => '显示',
+        '1' => '隐藏',
+    ];
+
     /**
      * @inheritdoc
      */
@@ -37,11 +49,14 @@ class Archives extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'author', 'content', 'tags'], 'trim'],
             [['author', 'content', 'cate_id', 'title', 'type', 'status'], 'required'],
             [['type', 'time', 'views', 'cate_id', 'status'], 'integer'],
+            ['status', 'in', 'range' => [0, 1]],
+            ['type', 'in', 'range' => [0, 1]],
             [['content'], 'string'],
             [['author'], 'string', 'max' => 255],
-            [['tags', 'title'], 'string', 'max' => 1024]
+            [['tags', 'title'], 'string', 'max' => 1024],
         ];
     }
 

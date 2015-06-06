@@ -15,7 +15,7 @@ $this->title = '请登录';
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'email')->textInput(['autocomplete' => 'off']) ?>
                 <?= $form->field($model, 'password')->passwordInput() ?>
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [

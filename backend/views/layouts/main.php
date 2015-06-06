@@ -34,10 +34,10 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => '文章', 'url' => ['/archive']],
-                ['label' => '栏目', 'url' => ['/category']],
-                ['label' => '评论', 'url' => ['/comment']],
-                ['label' => '反馈', 'url' => ['/feedback']],
+                ['label' => '文章', 'url' => ['/archive/index']],
+                ['label' => '栏目', 'url' => ['/category/index']],
+                ['label' => '评论', 'url' => ['/comment/index']],
+                ['label' => '反馈', 'url' => ['/feedback/index']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];

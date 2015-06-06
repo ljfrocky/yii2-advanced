@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\PostArchiveForm;
+use common\models\Categories;
 use Yii;
 use common\models\Archives;
 use common\models\ArchiveSearch;
@@ -76,15 +78,18 @@ class ArchiveController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Archives();
+        $model = new PostArchiveForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($archive = $model->create()) {
+                Yii::$app->session->setFlash('success', '创建成功');
+                return $this->redirect(['view', 'id' => $archive->id]);
+            }
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
