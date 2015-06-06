@@ -333,56 +333,6 @@
         "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays)."
     },
     {
-        "name": "fzaninotto/faker",
-        "version": "v1.4.0",
-        "version_normalized": "1.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fzaninotto/Faker.git",
-            "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/010c7efedd88bf31141a02719f51fb44c732d5a0",
-            "reference": "010c7efedd88bf31141a02719f51fb44c732d5a0",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0",
-            "squizlabs/php_codesniffer": "~1.5"
-        },
-        "time": "2014-06-04 14:43:02",
-        "type": "library",
-        "extra": {
-            "branch-alias": []
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Faker": "src/",
-                "Faker\\PHPUnit": "test/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "François Zaninotto"
-            }
-        ],
-        "description": "Faker is a PHP library that generates fake data for you.",
-        "keywords": [
-            "data",
-            "faker",
-            "fixtures"
-        ]
-    },
-    {
         "name": "yiisoft/yii2-faker",
         "version": "2.0.3",
         "version_normalized": "2.0.3.0",
@@ -939,41 +889,106 @@
         ]
     },
     {
-        "name": "bower-asset/editor.md",
-        "version": "v1.4.4",
-        "version_normalized": "1.4.4.0",
+        "name": "fzaninotto/faker",
+        "version": "v1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/pandao/editor.md.git",
-            "reference": "7e5a1e9f9e422d9a1c449677d6cedba141bd60a0"
+            "url": "https://github.com/fzaninotto/Faker.git",
+            "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pandao/editor.md/zipball/7e5a1e9f9e422d9a1c449677d6cedba141bd60a0",
-            "reference": "7e5a1e9f9e422d9a1c449677d6cedba141bd60a0",
+            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+            "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
             "shasum": ""
         },
-        "type": "bower-asset-library",
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "~1.5"
+        },
+        "suggest": {
+            "ext-intl": "*"
+        },
+        "time": "2015-05-29 06:29:14",
+        "type": "library",
         "extra": {
-            "bower-asset-ignore": [
-                "**/.*",
-                "research",
-                "docs",
-                "node_modules",
-                "bower_components",
-                "test",
-                "tests"
-            ]
+            "branch-alias": {
+                "dev-master": "1.5.x-dev"
+            }
         },
         "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Faker\\": "src/Faker/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
-        "description": "Open source online markdown editor.",
+        "authors": [
+            {
+                "name": "François Zaninotto"
+            }
+        ],
+        "description": "Faker is a PHP library that generates fake data for you.",
+        "keywords": [
+            "data",
+            "faker",
+            "fixtures"
+        ]
+    },
+    {
+        "name": "ijackua/yii2-lepture-markdown-editor-widget",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/iJackUA/yii2-lepture-markdown-editor-widget.git",
+            "reference": "c270e33f6df4b50ab493ee14fb40403e024fb522"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/iJackUA/yii2-lepture-markdown-editor-widget/zipball/c270e33f6df4b50ab493ee14fb40403e024fb522",
+            "reference": "c270e33f6df4b50ab493ee14fb40403e024fb522",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "time": "2014-03-29 19:06:57",
+        "type": "yii2-extension",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "ijackua\\lepture\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Evgeniy Kuzminov",
+                "email": "kyzminov@gmail.com",
+                "homepage": "http://stdout.in/",
+                "role": "Author"
+            }
+        ],
+        "description": "Yii2 widget for Lepture Markdown Editor (https://github.com/lepture/editor) - A markdown editor you really want",
+        "homepage": "https://github.com/iJackUA/yii2-lepture-markdown-editor-widget",
         "keywords": [
             "editor",
-            "editor.md",
-            "markdown"
+            "extension",
+            "lepture",
+            "markdown",
+            "widget",
+            "yii"
         ]
     }
 ]

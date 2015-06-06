@@ -38,7 +38,7 @@ class PostArchiveForm extends Model
             'cateId' => '所属栏目',
             'type' => '文章类型',
             'author' => '作者',
-            'labels' => '标签',
+            'tags' => '标签',
             'status' => '状态',
             'body' => '正文',
         ];

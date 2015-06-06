@@ -4,10 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Archives;
 use common\models\Categories;
+use ijackua\lepture\Markdowneditor;
+use ijackua\lepture\MarkdowneditorAssets;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Archives */
 /* @var $form yii\widgets\ActiveForm */
+
+MarkdowneditorAssets::register($this);
 ?>
 
 <div class="archives-form">
@@ -24,7 +28,7 @@ use common\models\Categories;
 
     <?= $form->field($model, 'status')->radioList(Archives::$statusList) ?>
 
-    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+    <?= Markdowneditor::widget(['model' => $model, 'attribute' => 'body']) ?>
 
     <?= $form->field($model, 'tags')->textInput(['maxlength' => 1024]) ?>
 
